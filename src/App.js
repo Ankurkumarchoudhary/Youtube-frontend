@@ -1,13 +1,12 @@
 
 import './App.css';
+import { AppContext } from './context/contextApi';
 
 function App() {
   return (
-    <div >
-     
-     Hello
-     
+   <AppContext> <div className="text-6xl">
     </div>
+    </AppContext>
   );
 }
 
