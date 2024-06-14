@@ -4,18 +4,19 @@ import { Link } from "react-router-dom";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import VideoLength from "../shared/videoLength";
 
-const VideoCard = ({ video }) => {
+const VideoCard = ({video }) => {
+  console.log(video)
   return (
-    <Link to={`/video/${video?.videoId}`}>
+    <Link to={`/video/${video?._id}`}>
       <div className="flex flex-col mb-8">
         <div className="relative h-48 md:h-40 md:rounded-xl overflow-hidden">
           <img
             className="h-full w-full object-cover"
-            src={video?.thumbnails[0]?.url}
+            src={video?.thumbnail}
             alt=""
           />
-          {video?.lengthSeconds &&(
-            <VideoLength time={video?.lengthSeconds}/>
+          {video?.duration&&(
+            <VideoLength time={video?.duration}/>
           )}
         </div>
         <div className="flex text-white mt-3">
@@ -40,14 +41,14 @@ const VideoCard = ({ video }) => {
                         </span>
                         <div className="flex text-[12px] font-semibold text-white/[0.7] truncate overflow-hidden">
                             <span>{`${abbreviateNumber(
-                                video?.stats?.views,
+                                video?.views,
                                 2
                             )} views`}</span>
                             <span className="flex text-[24px] leading-none font-bold text-white/[0.7] relative top-[-10px] mx-1">
                                 .
                             </span>
                             <span className="truncate">
-                                {video?.publishedTimeText}
+                                {video?.createdAt}
                             </span>
                         </div>
                     </div>
